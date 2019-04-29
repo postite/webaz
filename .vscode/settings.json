@@ -1,3 +1,20 @@
 {
-    "haxe.enableDiagnostics": false
+
+        "sync-rsync.exclude": [
+            ".git",
+            ".vscode",
+            "dabase.db",
+            "dibase.db",
+            "*.mp3",
+            "*.jpg",
+            "*.png",
+            "statics/*"
+            
+        ],
+        "sync-rsync.delete": false,
+        "sync-rsync.local": "/Users/ut/Documents/LAB/webaz/$tochange",
+        
+        "sync-rsync.remote": "postite@ssh-postite.alwaysdata.net:$tochange",
+        "sync-rsync.autoShowOutput": true
+    
 }
