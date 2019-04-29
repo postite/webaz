@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "node",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/www/node_server.js",
+            "preLaunchTask": "node_server_build",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/www/*.js"
+            ]
+        },
+        {
+        
+                    "name": "Listen for XDebug",
+                    "type": "php",
+                    "request": "launch",
+                    "port": 9000,
+                    //"localSourceRoot": "${workspaceRoot}",
+                    //"serverSourceRoot": "${workspaceRoot}/www"
+        
+        },
+        {
+            "name": "Launch php_server",
+            "type": "firefox",
+            "request": "launch",
+            "preLaunchTask": "php_server_build",
+            "reAttach": true,
+            "url": "http://webaz.local",
+            "webRoot": "${workspaceFolder}"
+        }
+        
+    ]
+}

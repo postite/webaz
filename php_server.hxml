@@ -1,0 +1,11 @@
+libs.hxml
+-cp ./
+-cp src
+-debug
+-D server
+-lib postite_mimo
+-D sqlite
+--no-traces
+-D analyzer-optimize
+-main app.Server
+-php www/

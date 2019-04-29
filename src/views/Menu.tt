@@ -1,0 +1,9 @@
+   (: static function render(?nav:Iterable<Dynamic>) :)
+   <ul>
+    
+    (: for it in nav :)
+        <li><a href="(:it.url:)">(:it.title:)</a></li>
+      (:end:)
+       
+     </ul>
+    (:end :)

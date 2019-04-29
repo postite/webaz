@@ -1,0 +1,12 @@
+-lib tink_web
+-lib tink_http
+-lib tink_sql
+-lib haxelow
+-lib tjson
+-lib mots
+-lib image
+-lib datetime
+-lib tink_template
+-lib tink_http_middleware
+-lib hx3compat
+-lib record-macros

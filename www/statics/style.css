@@ -1,0 +1,600 @@
+@font-face {
+    font-family: 'villairregular';
+    src: url('font/Villa-Irregular.woff2') format('woff2'),
+         url('font/Villa-Irregular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'villaregular';
+    src: url('font/Villa-Regular.woff2') format('woff2'),
+         url('font/Villa-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+-----------------------------------
+
+Reset -> Eric Meyer
++ border-box sur tous les éléments
++ html et body 100%
+
+-----------------------------------
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+  overflow-y: scroll;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    cursor: url(fleche.svg), pointer;
+}
+
+:root {
+  --grande-taille: 6.5vw;
+  --main-color: #61f5baff;
+  --minor-color: #161650ff;
+  --mini-color: #ff0066ff;
+}
+
+html,body{
+  background: var(--main-color);
+  color: var(--minor-color);
+  font-family: "villaregular";
+  font-size: 1.4vw;
+}
+
+::selection{
+  background:var(--minor-color);
+  color:var(--main-color);
+}
+::-moz-selection{
+  background:var(--minor-color);
+  color:var(--main-color);
+}
+
+/* GROS TRUC EN HAUT A GAUCHE OUECH */
+#pageDeTitre{
+  position: fixed;
+  z-index: 2;
+}
+#container{
+  background: var(--main-color);
+  height: 25vh;
+  width: 60vw;
+  display: grid;
+  grid-template:
+    [row1-start] "titre temps temps" 3fr [row1-end]
+    [row2-start] "sousTitre switchDessin switchEcrire" 1fr [row2-end]
+    / 3fr 1fr 1fr;
+}
+#grandTitre{
+  font-size: var(--grande-taille);
+  grid-area: titre;
+  justify-self: center;
+  align-self: center;
+}
+#grosTitre{
+  font-size: var(--grande-taille);
+}
+#grandTitre:hover{
+  color:var(--mini-color);
+  cursor: url(hand.svg), pointer;
+}
+#petitTitre{
+  display: grid;
+  grid-area: sousTitre;
+  border-top: 1px solid var(--mini-color);
+  border-bottom: 1px solid var(--mini-color);
+}
+#petitTitre span{
+  justify-self: center;
+  align-self: center;
+  margin-bottom: .2em;
+}
+#temps{
+  grid-area: temps;
+  display: grid;
+  border-bottom: 1px solid var(--mini-color);
+  border-left: 1px solid var(--mini-color);
+  position: relative;
+}
+
+#sommaireLettre{
+  align-self: center;
+  justify-self: center;
+  text-align:center;
+  width: 72%;
+  line-height: 1.35em;
+  letter-spacing: .1em;
+}
+
+#sommaireLettre span{
+  transition: .3s color;
+}
+#sommaireLettre span:hover{
+  color: var(--mini-color);
+  cursor: url(hand.svg) 10 12.5, pointer;
+}
+
+.focusOn{
+  color: var(--mini-color);
+}
+
+#phraseRestant{
+  font-family: "villairregular";
+  position: absolute;
+  top:45%;
+  left:0;
+  width: 100%;
+  text-align: center;
+}
+
+/* LISTE DES DESSIN OUECH */
+#propositions{
+position: relative;
+top:25vh;
+width: 60vw;
+}
+#propositions ul{
+  list-style: none;
+}
+#propositions ul li{
+  height: auto;
+  min-height: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--mini-color);
+  display: grid;
+  grid-template:
+    [row1-start] "lettre lesDessins propos ouvrir" auto [row1-end]
+    / 1fr 11fr 2fr 2fr;
+}
+#propositions ul li.infoscomp{
+  display: grid;
+  border-bottom: 1px solid var(--mini-color);
+  height: auto;
+  overflow: hidden;
+  grid-template:
+    [row1-start] "titreTimeline titreTimeline" 1fr [row1-end]
+    [row2-start] "timeline timeline" 3fr [row2-end]
+    [row3-start] "nbDessin dessinPropose" 3fr [row3-end]
+    / 1fr 3fr;
+}
+#propositions ul li.infoscomp .timeline{
+  grid-area: timeline;
+  align-self: center;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  /* background: pink; */
+  height: auto;
+}
+#propositions ul li.infoscomp .timeline div{
+  vertical-align:top;
+}
+#propositions ul li.infoscomp .timeline .lettreTime{
+  display: inline-block;
+  width:12.5%;
+  text-align: center;
+  /* background: darkgreen; */
+}
+#propositions ul li.infoscomp .timeline .lettreTime img{
+  width:100%;
+  height: 100%;
+  /* background: lightblue; */
+}
+#propositions ul li.infoscomp .timeline .flecheTimeline{
+  display: inline-block;
+  width:1vw;
+  height: 100%;
+  text-align: center;
+  margin-top: 6%;
+  color:var(--mini-color);
+  /* background: blue; */
+}
+
+#propositions ul li.infoscomp .timeline .flecheTimeline:last-of-type{
+  display: none;
+}
+
+
+#propositions ul li.infoscomp .nbDessin{
+  grid-area: nbDessin;
+  margin-left: 2em;
+  margin-top: 2em;
+  text-align: right;
+}
+
+#propositions ul li.infoscomp .timeline .innerTimeline{
+  align-self: center;
+  justify-self: center;
+}
+#propositions ul li.infoscomp .timeline img{
+  height: 170px;
+}
+.titreTimeline{
+  grid-area: titreTimeline;
+  align-self: center;
+  margin-left: 2em;
+}
+
+#propositions ul li .dessinPropose{
+  grid-area: dessinPropose;
+  display: grid;
+  height: 80%;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+#propositions ul li .dessinPropose .innerDessinPropose{
+  margin: .5em;
+}
+#propositions ul li .dessinPropose .innerDessinPropose img{
+  height: 3em;
+}
+
+
+
+
+
+#propositions ul li .nomLettre{
+  grid-area: lettre;
+  align-self: center;
+  justify-self: center;
+}
+#propositions ul li .petitDessins{
+  grid-area: lesDessins;
+  display: grid;
+  border-right: 1px solid var(--mini-color);
+  border-left: 1px solid var(--mini-color);
+  height: 80%;
+  align-self: center;
+}
+#propositions ul li .petitDessins .innerPetitDessins{
+  margin-left: .5em;
+  align-self: center;
+}
+#propositions ul li .petitDessins .innerPetitDessins img{
+  height: 1em;
+}
+#propositions ul li .occurencesLettre{
+  display: grid;
+  grid-area: propos;
+  border-right: 1px solid var(--mini-color);
+  height: 80%;
+  align-self: center;
+}
+#propositions ul li .occurencesLettre span{
+  justify-self: center;
+  align-self: center;
+}
+#propositions ul li .bouttonDessin{
+  grid-area: ouvrir;
+  justify-self: center;
+  align-self: center;
+  font-family: "villairregular";
+}
+#propositions ul li .bouttonDessin:hover{
+  color: var(--mini-color);
+  cursor: url(hand.svg), pointer;;
+}
+
+
+
+/* INTERFACE DE DESSIN OUICH */
+#dessin{
+  position: fixed;
+  left:60vw;
+  width: 40vw;
+  height: 100vh;
+  border-left: 1px solid var(--mini-color);
+  background: var(--main-color);
+}
+#innerDessin{
+  display: grid;
+  height: 100vh;
+  grid-template:
+    [row1-start] "nomInput nomInput nomInput nomInput nomInput nomInput nomInput nomInput nomInput nomInput" 1fr [row1-end]
+    [row2-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row2-end]
+    [row3-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row3-end]
+    [row4-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row4-end]
+    [row5-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row5-end]
+    [row6-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row6-end]
+    [row7-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row7-end]
+    [row8-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row8-end]
+    [row9-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row9-end]
+    [row10-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row10-end]
+    [row11-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row11-end]
+    [row12-start] "zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin zonedessin" 1fr [row12-end]
+    [row13-start] "erase erase erase erase erase envoyer envoyer envoyer envoyer envoyer" 1fr [row13-end]
+    / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+canvas{
+  grid-area: zonedessin;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid var(--mini-color);
+  border-bottom: 1px solid var(--mini-color);
+}
+canvas:hover{
+  cursor: url(circle.svg) 23 23, pointer;
+}
+/* canvas[resize] {
+
+} */
+#langue a{
+color: var(--main-color);
+transition: .5s color;
+text-decoration: none;
+}
+#langue a:hover{
+color: var(--mini-color);
+}
+#lettreTrans{
+  grid-area: zonedessin;
+  align-self: center;
+  text-align: center;
+  color: var(--main-color);
+  text-shadow:
+    -.7px -.7px 0 var(--mini-color),
+    .7px -.7px 0 var(--mini-color),
+    -.7px .7px 0 var(--mini-color),
+    .7px .7px 0 var(--mini-color);
+  font-size: 23em;
+  padding-bottom: .15em;
+}
+#introLettreTrans{
+  grid-area: zonedessin;
+  align-self: flex-end;
+  text-align: center;
+  padding-bottom: .15em;
+  padding: 1em;
+}
+
+#explication{
+  grid-area: zonedessin;
+  width: 100%;
+  height: 100%;
+  line-height: 1.2em;
+  text-indent: 3em;
+  align-self: center;
+  padding: 0em 2.5em 0em 2.5em;
+  margin-top: -1em;
+}
+#explication i{
+  font-family: "villairregular";
+}
+#explication a{
+  color:inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--mini-color);
+  cursor: url(hand.svg) 10 12.5, pointer;
+}
+#explication span{
+  color: var(--main-color);
+  text-shadow:
+		-1px -1px 0 var(--mini-color),
+		1px -1px 0 var(--mini-color),
+		-1px 1px 0 var(--mini-color),
+		1px 1px 0 var(--mini-color);
+}
+#explication p:first-child{
+  text-indent: 0em;
+}
+#questionentree{
+  grid-area: nomInput;
+  height: 50%;
+  width: 200%;
+  align-self: center;
+  padding: 0em 2.5em 0em 2.5em;
+}
+
+.download-svg{
+    height: 60%;
+    align-self: center;
+    grid-area: envoyer;
+    background: none;
+    text-align: right;
+    border: none;
+    font-family: "villairregular";
+    font-size: inherit;
+    color: inherit;
+    text-align: center;
+    margin-bottom: .1em;
+  }
+  #download-svg:hover{
+    color:var(--mini-color);
+    cursor: url(hand.svg) 10 12.5, pointer;
+  }
+
+#erase{
+  height: 60%;
+  align-self: center;
+  grid-area: erase;
+  background: none;
+  border: none;
+  font-family: "villairregular";
+  margin-left: -.3em;
+  font-size: inherit;
+  color: inherit;
+  border-right: 1px solid var(--mini-color);
+  text-align: center;
+  margin-bottom: .1em;
+}
+#erase:hover{
+  color:var(--mini-color);
+  cursor: url(hand.svg) 10 12.5, pointer;
+}
+#name{
+  height: 60%;
+  align-self: center;
+  text-align: center;
+  grid-area: nomInput;
+  background: none;
+  border: none;
+  font-family: "villaregular";
+  font-size: inherit;
+  color: inherit;
+  }
+  #name:focus {
+    outline:0;
+  }
+.notRightnow{
+  display: none;
+}
+
+
+#popEntree{
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 15vw 26vw 10vw 26vw;
+  line-height: 1.3em;
+  background:var(--minor-color);
+  color: var(--main-color);
+}
+#popEntree span{
+  color: var(--mini-color);
+  cursor: url(hand.svg) 10 12.5, pointer;
+  transition: .3s color;
+}
+#popEntree span:hover{
+  color: var(--main-color);
+}
+
+
+
+
+
+
+
+#swDessin          {
+                        grid-area: switchDessin;
+                        display: grid;
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: middle;
+                        border-left: 1px solid var(--mini-color);
+                        border-bottom: 1px solid var(--mini-color);
+                      }
+#swEcrire             {
+                        grid-area: switchEcrire;
+                        display: grid;
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: middle;
+                        border-left: 1px solid var(--mini-color);
+                        border-bottom: 1px solid var(--mini-color);
+                      }
+#swEcrire span,
+#swDessin span        {
+                        text-align: center;
+                        justify-self: center;
+                        align-self: center;
+                        margin-bottom: .1em;
+                      }
+#swEcrire span:hover,
+#swDessin span:hover  {
+                        color:var(--mini-color);
+                        cursor: url(hand.svg), pointer;
+                      }
+
+#commentaire          {
+                        grid-area: zonedessin;
+                        align-self: center;
+
+                        padding: 2em 2.5em 0em 2.5em;
+
+                        width: 100%;
+                        height: 100%;
+
+                        line-height: 1.2em;
+                        font-size: inherit;
+                        font-family: inherit;
+
+                        background:transparent;
+
+                        border:none;
+                        display: none;
+
+                        border-top: 1px solid var(--mini-color);
+                        border-bottom: 1px solid var(--mini-color);
+
+                        color:var(--minor-color);
+                      }
+.com                  {
+                        border-left: 1px solid var(--mini-color);
+                      }
+
+#listecommentaire     {
+                        padding: 2em;
+                        display: none;
+                      }
+.commentaire          {
+                        margin-bottom:2em;
+                      }
+.pseudo, .date        {
+                        color:var(--mini-color);
+                        border-bottom: 1px solid var(--minor-color);
+                      }
+.message              {
+                        line-height: 1.2em;
+                      }
+.activemode           {
+                          background: var(--minor-color);
+                          color: var(--main-color);
+                      }
+.bouttonecriture      {
+                        border-left: 1px solid var(--mini-color) !important;
+                        border-top: 1px solid var(--mini-color) !important;
+                      }

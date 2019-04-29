@@ -1,0 +1,7 @@
+libs.hxml
+-cp src
+-lib hxnodejs
+-lib postite_mimo
+-D analyzer-optimize
+-main app.Server
+-js www/node_server.js

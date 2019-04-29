@@ -1,0 +1,3 @@
+-D mots=0.0.4
+# @install: lix --silent download "gh://github.com/postite/mots#b6b1bcc03b08e368981e61487db42f10e2901605" into mots/0.0.4/github/b6b1bcc03b08e368981e61487db42f10e2901605
+-cp ${HAXE_LIBCACHE}/mots/0.0.4/github/b6b1bcc03b08e368981e61487db42f10e2901605/src/

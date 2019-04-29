@@ -1,0 +1,10 @@
+ -cp src
+-dce full
+-lib compiletime
+-lib tink_http
+#-lib jQueryExtern
+-lib tink_web
+-main app.Client
+-js www/statics/client.js
+
+--times

@@ -1,0 +1,7 @@
+-D tink_template=0.3.3
+# @install: lix --silent download "gh://github.com/haxetink/tink_template#dcf3c80c34ba368d9b8d06f42c6c25640ec9d7f5" into tink_template/0.3.3/github/dcf3c80c34ba368d9b8d06f42c6c25640ec9d7f5
+-lib tink_syntaxhub
+-cp ${HAXE_LIBCACHE}/tink_template/0.3.3/github/dcf3c80c34ba368d9b8d06f42c6c25640ec9d7f5/src
+--macro tink.Template.addFlavor('mtt', '::', '::', true)
+--macro tink.Template.addFlavor('tt', '(:', ':)', false)
+--macro tink.Template.use()
