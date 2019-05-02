@@ -1,7 +1,5 @@
 package wire;
 class Tools{
-
-
     public static function underclean(str:String):String{
    	str=~/[\.]/.replace(str,"alaplacedupoint");
     var nonWordChar= ~/[\xC0-\xFF\s\W]/g;

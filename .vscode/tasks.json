@@ -26,7 +26,7 @@
                 "$haxe-error",
                 "$haxe-trace"
             ],
-            //"dependsOn": "client_build",
+            "dependsOn": "client_build",
             "group": {
                 "kind": "build",
                 "isDefault": true

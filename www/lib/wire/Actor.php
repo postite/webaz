@@ -6,8 +6,8 @@
 
 namespace wire;
 
-use \views\Layout;
 use \php\Boot;
+use \views\__impl\Head;
 use \haxe\ds\StringMap;
 use \haxe\Serializer;
 
@@ -16,21 +16,105 @@ class Actor {
 	 * @var StringMap
 	 */
 	static public $actions;
+	/**
+	 * @var ILayout
+	 */
+	static public $defaultLayout;
+	/**
+	 * @var \Array_hx
+	 */
+	static public $scripts;
 
 	/**
-	 * @param Layout $layout
+	 * @param ILayout $layout
+	 * @param string $actions
+	 * 
+	 * @return ILayout
+	 */
+	static public function addAct ($layout, $actions) {
+		#src/wire/Actor.hx:31: characters 9-29
+		Actor::init($layout, $actions);
+		#src/wire/Actor.hx:32: characters 9-22
+		return $layout;
+	}
+
+	/**
+	 * @param ILayout $layout
 	 * @param string $a
 	 * @param string $data
 	 * 
-	 * @return Layout
+	 * @return ILayout
 	 */
 	static public function addAction ($layout, $a, $data = null) {
-		#src/wire/Actor.hx:16: characters 13-32
+		#src/wire/Actor.hx:24: characters 13-32
 		Actor::writeAction($a, $data);
-		#src/wire/Actor.hx:17: characters 13-56
-		$layout->addAct(Serializer::run(Actor::$actions));
-		#src/wire/Actor.hx:18: characters 13-26
+		#src/wire/Actor.hx:25: characters 13-56
+		Actor::addAct($layout, Serializer::run(Actor::$actions));
+		#src/wire/Actor.hx:26: characters 13-26
 		return $layout;
+	}
+
+	/**
+	 * @param ILayout $layout
+	 * @param string $script
+	 * 
+	 * @return ILayout
+	 */
+	static public function addScript ($layout, $script) {
+		#src/wire/Actor.hx:37: lines 37-38
+		if (!\Lambda::has(Actor::$scripts, $script)) {
+			#src/wire/Actor.hx:38: characters 13-33
+			$_this = Actor::$scripts;
+			$_this->arr[$_this->length] = $script;
+			++$_this->length;
+		}
+		#src/wire/Actor.hx:39: characters 13-26
+		return $layout;
+	}
+
+	/**
+	 * @param ILayout $layout
+	 * @param string $actions
+	 * 
+	 * @return void
+	 */
+	static public function init ($layout, $actions = null) {
+		#src/wire/Actor.hx:44: characters 9-55
+		$layout->head = Head::render(Actor::$scripts, $actions);
+	}
+
+	/**
+	 * @param ILayout $layout
+	 * 
+	 * @return ILayout
+	 */
+	static public function set_defaultLayout ($layout) {
+		#src/wire/Actor.hx:16: characters 9-36
+		return Actor::$defaultLayout = $layout;
+	}
+
+	/**
+	 * @param string $v
+	 * @param ILayout $layout
+	 * @param string $contentid
+	 * 
+	 * @return ILayout
+	 */
+	static public function withLayout ($v, $layout = null, $contentid = "layout") {
+		#src/wire/Actor.hx:52: lines 52-58
+		if ($contentid === null) {
+			$contentid = "layout";
+		}
+		#src/wire/Actor.hx:53: characters 8-60
+		$_Layout = ($layout === null ? Actor::$defaultLayout : $layout);
+		#src/wire/Actor.hx:54: characters 8-21
+		Actor::init($_Layout);
+		#src/wire/Actor.hx:55: characters 9-30
+		$_Layout->viewContent = $v;
+		#src/wire/Actor.hx:56: characters 9-29
+		$_Layout->id = $contentid;
+		#src/wire/Actor.hx:57: characters 9-23
+		return $_Layout;
 	}
 
 	/**
@@ -40,9 +124,9 @@ class Actor {
 	 * @return StringMap
 	 */
 	static public function writeAction ($a, $data = null) {
-		#src/wire/Actor.hx:23: characters 9-28
+		#src/wire/Actor.hx:48: characters 9-28
 		Actor::$actions->data[$a] = $data;
-		#src/wire/Actor.hx:24: characters 9-23
+		#src/wire/Actor.hx:49: characters 9-23
 		return Actor::$actions;
 	}
 
@@ -70,8 +154,12 @@ class Actor {
 
 
 		self::$actions = new StringMap();
+		self::$scripts = new \Array_hx();
 	}
 }
 
 Boot::registerClass(Actor::class, 'wire.Actor');
+Boot::registerSetters('wire\\Actor', [
+	'defaultLayout' => true
+]);
 Actor::__hx__init();

@@ -33,8 +33,8 @@ class Writer0 extends BasicWriter {
 		#/Users/ut/haxe/haxe_libraries/tink_json/0.9.0/haxelib/src/tink/json/macros/GenWriter.hx:129: characters 13-35
 		$this->buf->add("\"name\":");
 		#/Users/ut/haxe/haxe_libraries/tink_json/0.9.0/haxelib/src/tink/json/macros/GenWriter.hx:26: characters 18-41
-		$s = JsonPrinter::print($value1);
-		$this->buf->add($s);
+		$s1 = JsonPrinter::print($value1);
+		$this->buf->add($s1);
 
 
 

@@ -16,40 +16,45 @@ import tink.web.forms.FormFile;
 import sys.FileSystem;
 
 using tink.io.Source;
-using views.Layout;
 using wire.Actor;
-
 import command.*;
+
 using wire.Tools;
 
 class Server {
+	#if server
 	static function main() {
+
 		#if php
 		var container = PhpContainer.inst;
 		#else
+
 		var container = new NodeContainer(8080);
 		#end
 		var router = new Router<Root>(new Root());
 		var handler:tink.http.Handler = function(req) {
 			return router.route(Context.ofRequest(req)).recover(OutgoingResponse.reportError);
 		}
+
 		handler = handler.applyMiddleware(new Static('./statics', '/'));
 		container.run(handler);
+
 	}
+	#end
 }
 
-class Root {
+class Root implements app.IRemoteRoot{
 
 	public function new() {
-		
-		Layout.instance.footer = views.Footer.render();
+		Actor.defaultLayout = new views.Layout();
+		Actor.defaultLayout.footer  = views.Footer.render();
 		var nav = [{
 			url: "/rss",
 			title: "abonne toi en afrique ",
 			description: "le flux nrss du podcast"
 		}];
-		Layout.instance.menu = views.Menu.render(nav);
-		Layout.instance.header = views.Header.render();
+		Actor.defaultLayout.menu = views.Menu.render(nav);
+		Actor.defaultLayout.header = views.Header.render();
 	}
 	@:sub('/sqlit/')
 	#if php

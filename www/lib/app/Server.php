@@ -22,18 +22,18 @@ class Server {
 	 * @return void
 	 */
 	static public function main () {
-		#src/app/Server.hx:28: characters 3-37
+		#src/app/Server.hx:29: characters 3-37
 		$container = PhpContainer::$inst;
-		#src/app/Server.hx:32: characters 3-45
+		#src/app/Server.hx:34: characters 3-45
 		$router = new Router0(new Root());
-		#src/app/Server.hx:33: lines 33-35
+		#src/app/Server.hx:35: lines 35-37
 		$handler = new SimpleHandler(function ($req)  use (&$router) {
-			#src/app/Server.hx:34: characters 24-46
+			#src/app/Server.hx:36: characters 24-46
 			$this1 = Context::ofRequest($req);
-			#src/app/Server.hx:34: characters 11-85
-			$this2 = $router->route($this1);
+			#src/app/Server.hx:36: characters 11-85
+			$this11 = $router->route($this1);
 			$f = Recover_Impl_::ofSync(Boot::getStaticClosure(OutgoingResponse_Impl_::class, 'reportError'));
-			$ret = $this2->flatMap(function ($o)  use (&$f) {
+			$ret = $this11->flatMap(function ($o)  use (&$f) {
 				$__hx__switch = ($o->index);
 				if ($__hx__switch === 0) {
 					$d = $o->params[0];
@@ -45,9 +45,9 @@ class Server {
 			});
 			return $ret->gather();
 		});
-		#src/app/Server.hx:36: characters 13-66
+		#src/app/Server.hx:39: characters 13-66
 		$handler = (new Static_hx("./statics", "/"))->apply($handler);
-		#src/app/Server.hx:37: characters 3-25
+		#src/app/Server.hx:40: characters 3-25
 		$container->run($handler);
 	}
 }

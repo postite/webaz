@@ -15,7 +15,7 @@ final class ActionCommand_Impl_ {
 	 * @return Class
 	 */
 	static public function toClass ($a) {
-		#src/wire/ActionCommand.hx:12: characters 9-41
+		#src/wire/ActionCommand.hx:11: characters 9-41
 		return \Type::resolveClass($a);
 	}
 
@@ -25,7 +25,7 @@ final class ActionCommand_Impl_ {
 	 * @return string
 	 */
 	static public function toString ($c) {
-		#src/wire/ActionCommand.hx:8: characters 9-36
+		#src/wire/ActionCommand.hx:7: characters 9-36
 		return \Type::getClassName($c);
 	}
 }

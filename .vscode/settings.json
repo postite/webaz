@@ -12,7 +12,7 @@
             
         ],
         "sync-rsync.delete": false,
-        "sync-rsync.local": "/Users/ut/Documents/LAB/webaz/$tochange",
+        "sync-rsync.local": "/Users/ut/Documents/LAB/$tochange",
         
         "sync-rsync.remote": "postite@ssh-postite.alwaysdata.net:$tochange",
         "sync-rsync.autoShowOutput": true

@@ -1,6 +1,5 @@
 package wire;
 
-
 abstract ActionCommand(String) from String to String{
 
     @:from public static function toString(c:Class<ICommand>):ActionCommand{

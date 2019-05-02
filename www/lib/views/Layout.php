@@ -6,17 +6,14 @@
 
 namespace views;
 
-use \views\__impl\Head as __implHead;
+use \views\__impl\Header as __implHeader;
 use \php\Boot;
+use \wire\ILayout;
+use \views\__impl\Footer as __implFooter;
 use \tink\template\_Html\Html_Impl_;
 use \tink\template\_Html\HtmlBuffer_Impl_;
 
-class Layout {
-	/**
-	 * @var Layout
-	 */
-	static public $_instance;
-
+class Layout implements ILayout {
 	/**
 	 * @var string
 	 */
@@ -38,93 +35,18 @@ class Layout {
 	 */
 	public $menu;
 	/**
-	 * @var \Array_hx
-	 */
-	public $scripts;
-	/**
 	 * @var string
 	 */
 	public $viewContent;
 
 	/**
-	 * @return Layout
-	 */
-	static public function get_instance () {
-		#src/views/Layout.hx:22: lines 22-23
-		if (Layout::$_instance === null) {
-			#src/views/Layout.hx:23: characters 13-37
-			Layout::$_instance = new Layout();
-		}
-		#src/views/Layout.hx:24: characters 9-25
-		return Layout::$_instance;
-	}
-
-	/**
-	 * @param string $v
-	 * @param string $contentid
-	 * 
-	 * @return Layout
-	 */
-	static public function withLayout ($v, $contentid = "layout") {
-		#src/views/Layout.hx:29: lines 29-36
-		if ($contentid === null) {
-			$contentid = "layout";
-		}
-		#src/views/Layout.hx:31: characters 9-31
-		Layout::get_instance()->init();
-		#src/views/Layout.hx:32: characters 9-38
-		Layout::get_instance()->viewContent = $v;
-		#src/views/Layout.hx:33: characters 9-37
-		Layout::get_instance()->id = $contentid;
-		#src/views/Layout.hx:34: characters 9-31
-		return Layout::get_instance();
-	}
-
-	/**
 	 * @return void
 	 */
 	public function __construct () {
-		#src/views/Layout.hx:14: characters 39-41
-		$this->scripts = new \Array_hx();
-	}
-
-	/**
-	 * @param string $actions
-	 * 
-	 * @return Layout
-	 */
-	public function addAct ($actions) {
-		#src/views/Layout.hx:47: characters 9-48
-		$this->head = __implHead::render($this->scripts, $actions);
-		#src/views/Layout.hx:48: characters 9-20
-		return $this;
-	}
-
-	/**
-	 * @param string $script
-	 * 
-	 * @return Layout
-	 */
-	public function addScript ($script) {
-		#src/views/Layout.hx:40: lines 40-41
-		if (!\Lambda::has($this->scripts, $script)) {
-			#src/views/Layout.hx:41: characters 13-33
-			$_this = $this->scripts;
-			$_this->arr[$_this->length] = $script;
-			++$_this->length;
-		}
-		#src/views/Layout.hx:42: characters 13-24
-		return $this;
-	}
-
-	/**
-	 * @return Layout
-	 */
-	public function init () {
-		#src/views/Layout.hx:53: characters 9-45
-		$this->head = __implHead::render($this->scripts, null);
-		#src/views/Layout.hx:54: characters 9-20
-		return $this;
+		#src/views/Layout.hx:17: characters 9-42
+		$this->footer = __implFooter::render();
+		#src/views/Layout.hx:18: characters 9-42
+		$this->header = __implHeader::render();
 	}
 
 	/**
@@ -196,6 +118,3 @@ class Layout {
 }
 
 Boot::registerClass(Layout::class, 'views.Layout');
-Boot::registerGetters('views\\Layout', [
-	'instance' => true
-]);

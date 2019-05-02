@@ -44,7 +44,7 @@ class Router0 {
 	 * @return FutureObject
 	 */
 	public function hello ($ctx) {
-		#src/app/Server.hx:62: lines 62-65
+		#src/app/Server.hx:67: lines 67-70
 		return Promise_Impl_::next(new SyncFuture(new LazyConst(Outcome::Success($this->target->hello()))), Next_Impl_::ofSafeSync(function ($v) {
 			return Response_Impl_::ofHtml($v);
 		}));
@@ -71,29 +71,29 @@ class Router0 {
 			if ($_g3 === "GET") {
 				#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:143: characters 22-31
 				if ($_g1 === false) {
-					#src/app/Server.hx:61: characters 8-11
+					#src/app/Server.hx:66: characters 8-11
 					return Promise_Impl_::ofSpecific($this->hello($ctx));
 				} else if ($_g1 === true) {
 					#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:143: characters 22-31
 					if ($_g === false) {
-						#src/app/Server.hx:66: characters 8-14
+						#src/app/Server.hx:71: characters 8-14
 						return Promise_Impl_::ofSpecific($this->rss($ctx));
 					} else {
-						#src/app/Server.hx:32: characters 20-32
+						#src/app/Server.hx:34: characters 20-32
 						$this1 = $ctx->request->header->url;
 						return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this1->query === null ? $this1->path : ($this1->path??'null') . "?" . ($this1->query??'null')))??'null'), new HxAnon([
 							"fileName" => "src/app/Server.hx",
-							"lineNumber" => 32,
+							"lineNumber" => 34,
 							"className" => "tink.web.routing.Router0",
 							"methodName" => "route",
 						])))));
 					}
 				}
 			} else {
-				$this2 = $ctx->request->header->url;
-				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this2->query === null ? $this2->path : ($this2->path??'null') . "?" . ($this2->query??'null')))??'null'), new HxAnon([
+				$this11 = $ctx->request->header->url;
+				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this11->query === null ? $this11->path : ($this11->path??'null') . "?" . ($this11->query??'null')))??'null'), new HxAnon([
 					"fileName" => "src/app/Server.hx",
-					"lineNumber" => 32,
+					"lineNumber" => 34,
 					"className" => "tink.web.routing.Router0",
 					"methodName" => "route",
 				])))));
@@ -103,20 +103,20 @@ class Router0 {
 			if ($_g1 === false) {
 				#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:137: characters 22-39
 				if ($_g3 === "GET") {
-					#src/app/Server.hx:61: characters 8-11
+					#src/app/Server.hx:66: characters 8-11
 					return Promise_Impl_::ofSpecific($this->hello($ctx));
 				} else {
-					#src/app/Server.hx:32: characters 20-32
-					$this3 = $ctx->request->header->url;
-					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this3->query === null ? $this3->path : ($this3->path??'null') . "?" . ($this3->query??'null')))??'null'), new HxAnon([
+					#src/app/Server.hx:34: characters 20-32
+					$this12 = $ctx->request->header->url;
+					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this12->query === null ? $this12->path : ($this12->path??'null') . "?" . ($this12->query??'null')))??'null'), new HxAnon([
 						"fileName" => "src/app/Server.hx",
-						"lineNumber" => 32,
+						"lineNumber" => 34,
 						"className" => "tink.web.routing.Router0",
 						"methodName" => "route",
 					])))));
 				}
 			} else if ($_g1 === true) {
-				#src/app/Server.hx:54: characters 8-17
+				#src/app/Server.hx:59: characters 8-17
 				return $this->whatever($ctx, 1);
 			}
 		} else if ($_g2 === "uploadFile") {
@@ -124,14 +124,14 @@ class Router0 {
 			if ($_g3 === "GET") {
 				#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:143: characters 22-31
 				if ($_g1 === false) {
-					#src/app/Server.hx:61: characters 8-11
+					#src/app/Server.hx:66: characters 8-11
 					return Promise_Impl_::ofSpecific($this->hello($ctx));
 				} else {
-					#src/app/Server.hx:32: characters 20-32
-					$this4 = $ctx->request->header->url;
-					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this4->query === null ? $this4->path : ($this4->path??'null') . "?" . ($this4->query??'null')))??'null'), new HxAnon([
+					#src/app/Server.hx:34: characters 20-32
+					$this13 = $ctx->request->header->url;
+					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this13->query === null ? $this13->path : ($this13->path??'null') . "?" . ($this13->query??'null')))??'null'), new HxAnon([
 						"fileName" => "src/app/Server.hx",
-						"lineNumber" => 32,
+						"lineNumber" => 34,
 						"className" => "tink.web.routing.Router0",
 						"methodName" => "route",
 					])))));
@@ -139,23 +139,23 @@ class Router0 {
 			} else if ($_g3 === "POST") {
 				#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:143: characters 22-31
 				if (($_g1 === true) && ($_g === false)) {
-					#src/app/Server.hx:73: characters 10-23
+					#src/app/Server.hx:78: characters 10-23
 					return Promise_Impl_::ofSpecific($this->uploadFile($ctx));
 				} else {
-					#src/app/Server.hx:32: characters 20-32
-					$this5 = $ctx->request->header->url;
-					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this5->query === null ? $this5->path : ($this5->path??'null') . "?" . ($this5->query??'null')))??'null'), new HxAnon([
+					#src/app/Server.hx:34: characters 20-32
+					$this14 = $ctx->request->header->url;
+					return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this14->query === null ? $this14->path : ($this14->path??'null') . "?" . ($this14->query??'null')))??'null'), new HxAnon([
 						"fileName" => "src/app/Server.hx",
-						"lineNumber" => 32,
+						"lineNumber" => 34,
 						"className" => "tink.web.routing.Router0",
 						"methodName" => "route",
 					])))));
 				}
 			} else {
-				$this6 = $ctx->request->header->url;
-				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this6->query === null ? $this6->path : ($this6->path??'null') . "?" . ($this6->query??'null')))??'null'), new HxAnon([
+				$this15 = $ctx->request->header->url;
+				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this15->query === null ? $this15->path : ($this15->path??'null') . "?" . ($this15->query??'null')))??'null'), new HxAnon([
 					"fileName" => "src/app/Server.hx",
-					"lineNumber" => 32,
+					"lineNumber" => 34,
 					"className" => "tink.web.routing.Router0",
 					"methodName" => "route",
 				])))));
@@ -163,14 +163,14 @@ class Router0 {
 		} else {
 			#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:137: characters 22-39
 			if (($_g3 === "GET") && ($_g1 === false)) {
-				#src/app/Server.hx:61: characters 8-11
+				#src/app/Server.hx:66: characters 8-11
 				return Promise_Impl_::ofSpecific($this->hello($ctx));
 			} else {
-				#src/app/Server.hx:32: characters 20-32
-				$this7 = $ctx->request->header->url;
-				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this7->query === null ? $this7->path : ($this7->path??'null') . "?" . ($this7->query??'null')))??'null'), new HxAnon([
+				#src/app/Server.hx:34: characters 20-32
+				$this16 = $ctx->request->header->url;
+				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(404, "Not Found: [" . ($ctx->request->header->method??'null') . "] " . ((($this16->query === null ? $this16->path : ($this16->path??'null') . "?" . ($this16->query??'null')))??'null'), new HxAnon([
 					"fileName" => "src/app/Server.hx",
-					"lineNumber" => 32,
+					"lineNumber" => 34,
 					"className" => "tink.web.routing.Router0",
 					"methodName" => "route",
 				])))));
@@ -184,7 +184,7 @@ class Router0 {
 	 * @return FutureObject
 	 */
 	public function rss ($ctx) {
-		#src/app/Server.hx:67: lines 67-71
+		#src/app/Server.hx:72: lines 72-76
 		return Promise_Impl_::next(new SyncFuture(new LazyConst(Outcome::Success($this->target->rss()))), Next_Impl_::ofSafeSync(function ($v) {
 			return Response_Impl_::ofHtml($v);
 		}));
@@ -196,7 +196,7 @@ class Router0 {
 	 * @return FutureObject
 	 */
 	public function uploadFile ($ctx) {
-		#src/app/Server.hx:74: lines 74-77
+		#src/app/Server.hx:79: lines 79-82
 		$_gthis = $this;
 		$_g1 = null;
 		$_g = $ctx->request->header->contentType();
@@ -218,7 +218,7 @@ class Router0 {
 		} else {
 			#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:660: characters 22-29
 			$invalid = $_g1;
-			#src/app/Server.hx:74: lines 74-77
+			#src/app/Server.hx:79: lines 79-82
 			$tmp = new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(406, "Cannot process Content-Type " . ($invalid??'null'), new HxAnon([
 				"fileName" => "tink/web/macros/Routing.hx",
 				"lineNumber" => 661,
@@ -233,7 +233,7 @@ class Router0 {
 				}
 				return new SyncFuture(new LazyConst(Outcome::Failure(new TypedError(415, "Unsupported Media Type", new HxAnon([
 					"fileName" => "src/app/Server.hx",
-					"lineNumber" => 74,
+					"lineNumber" => 79,
 					"className" => "tink.web.routing.Router0",
 					"methodName" => "uploadFile",
 				])))));
@@ -250,7 +250,7 @@ class Router0 {
 	public function whatever ($ctx, $__depth__) {
 		#/Users/ut/haxe/haxe_libraries/tink_web/0.1.4/github/c4323c7b0c2f0b44e696eea51c9bfdff41716880/src/tink/web/macros/Routing.hx:368: characters 13-42
 		$ctx1 = $ctx->sub($__depth__);
-		#src/app/Server.hx:56: characters 5-45
+		#src/app/Server.hx:61: characters 5-45
 		return Promise_Impl_::next(new SyncFuture(new LazyConst(Outcome::Success($this->target->whatever))), function ($__target__)  use (&$ctx1) {
 			return (new Router1($__target__))->route($ctx1);
 		});

@@ -20,7 +20,7 @@ use \views\__impl\Home;
 use \views\__impl\Menu;
 use \tink\core\_Future\FutureObject;
 
-class Root {
+class Root implements IRemoteRoot {
 	/**
 	 * @var SQLiteRoute
 	 */
@@ -30,36 +30,38 @@ class Root {
 	 * @return void
 	 */
 	public function __construct () {
-		#src/app/Server.hx:56: characters 27-44
+		#src/app/Server.hx:61: characters 27-44
 		$this->whatever = new SQLiteRoute();
-		#src/app/Server.hx:45: characters 3-49
-		Layout::get_instance()->footer = Footer::render();
-		#src/app/Server.hx:46: lines 46-50
+		#src/app/Server.hx:49: characters 3-43
+		Actor::set_defaultLayout(new Layout());
+		#src/app/Server.hx:50: characters 3-54
+		Actor::$defaultLayout->footer = Footer::render();
+		#src/app/Server.hx:51: lines 51-55
 		$nav = \Array_hx::wrap([new HxAnon([
 			"url" => "/rss",
 			"title" => "abonne toi en afrique ",
 			"description" => "le flux nrss du podcast",
 		])]);
-		#src/app/Server.hx:51: characters 3-48
-		Layout::get_instance()->menu = Menu::render($nav);
-		#src/app/Server.hx:52: characters 3-49
-		Layout::get_instance()->header = Header::render();
+		#src/app/Server.hx:56: characters 3-52
+		Actor::$defaultLayout->menu = Menu::render($nav);
+		#src/app/Server.hx:57: characters 3-53
+		Actor::$defaultLayout->header = Header::render();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function hello () {
-		#src/app/Server.hx:64: characters 3-102
-		return Actor::addAction(Actor::addAction(Layout::withLayout(Home::render()), ActionCommand_Impl_::toString(Boot::getClass(MyCommand::class))), ActionCommand_Impl_::toString(Boot::getClass(MyCommand2::class)), "bingo")->render();
+		#src/app/Server.hx:69: characters 3-102
+		return Actor::addAction(Actor::addAction(Actor::withLayout(Home::render()), ActionCommand_Impl_::toString(Boot::getClass(MyCommand::class))), ActionCommand_Impl_::toString(Boot::getClass(MyCommand2::class)), "bingo")->render();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function rss () {
-		#src/app/Server.hx:70: characters 3-102
-		return Actor::addAction(Actor::addAction(Layout::withLayout(Home::render()), ActionCommand_Impl_::toString(Boot::getClass(MyCommand::class))), ActionCommand_Impl_::toString(Boot::getClass(MyCommand2::class)), "bongo")->render();
+		#src/app/Server.hx:75: characters 3-102
+		return Actor::addAction(Actor::addAction(Actor::withLayout(Home::render()), ActionCommand_Impl_::toString(Boot::getClass(MyCommand::class))), ActionCommand_Impl_::toString(Boot::getClass(MyCommand2::class)), "bongo")->render();
 	}
 
 	/**
@@ -68,7 +70,7 @@ class Root {
 	 * @return FutureObject
 	 */
 	public function uploadFile ($body) {
-		#src/app/Server.hx:76: characters 4-37
+		#src/app/Server.hx:81: characters 4-37
 		return FileApi::saveImg($body->file);
 	}
 }
