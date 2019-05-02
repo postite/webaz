@@ -12,7 +12,7 @@ class Actor{
     public function new(){
 
     }
-    public static function set_defaultLayout(layout:ILayout){
+     static function set_defaultLayout(layout:ILayout){
         return defaultLayout=layout;
     }
 
